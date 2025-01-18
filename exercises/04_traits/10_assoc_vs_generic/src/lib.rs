@@ -12,6 +12,36 @@
 // interested in learning more about it.
 // You don't have to though: it's perfectly okay to write three separate
 // implementations manually. Venture further only if you're curious.
+trait Power<I> {
+    fn power(self, index: I) -> Self;
+}
+
+macro_rules! easy {
+    ($b:ty:$h:ty) => {
+        impl Power<$h> for $b {
+            fn power(mut self, mut index: $h) -> Self {
+                let mut r = 1;
+                while index != 0 {
+                    if index % 2 == 1 {
+                        r *= self;
+                    }
+                    self *= self;
+                    index /= 2;
+                }
+                r
+            }
+        }
+    };
+    ($($b:ty:$h:ty),+) => {
+        $(easy!($b:$h);)+
+    }
+}
+
+impl<A: Power<B>,B: Copy> Power<&B> for A {
+    fn power(self, index: &B) -> A {self.power(*index)}
+}
+
+easy![u32:u16, u32:u32];
 
 #[cfg(test)]
 mod tests {
