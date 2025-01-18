@@ -9,6 +9,11 @@
 // `factorial(2)` to return `2`, and so on.
 //
 // Use only what you learned! No loops yet, so you'll have to use recursion!
+fn factorial(n: u8) -> u128 {
+    let mut r = 1;
+    for i in 1..=n {r *= i as u128}
+    r
+}
 
 #[cfg(test)]
 mod tests {
