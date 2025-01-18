@@ -2,6 +2,22 @@
 // even, otherwise `false`.
 //
 // Then implement the trait for `u32` and `i32`.
+trait IsEven {
+    fn is_even(&self) -> bool;
+}
+
+macro_rules! easy {
+    ($t:ty) => {
+        impl IsEven for $t {
+            fn is_even(&self) -> bool {
+                self % 2 == 0
+            }
+        }
+    }
+}
+
+easy![u32];
+easy![i32];
 
 #[cfg(test)]
 mod tests {
