@@ -12,6 +12,20 @@ pub struct TicketStore {
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct TicketId(u64);
 
+use std::ops::IndexMut;
+
+impl IndexMut<TicketId> for TicketStore {
+    fn index_mut(&mut self, id: TicketId) -> &mut Ticket {
+        &mut self.tickets[id.0 as usize]
+    }
+}
+
+impl IndexMut<&TicketId> for TicketStore {
+    fn index_mut(&mut self, id: &TicketId) -> &mut Ticket {
+        &mut self.tickets[id.0 as usize]
+    }
+}
+
 #[derive(Clone, Debug, PartialEq)]
 pub struct Ticket {
     pub id: TicketId,
