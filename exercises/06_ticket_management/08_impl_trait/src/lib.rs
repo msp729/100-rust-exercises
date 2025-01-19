@@ -31,6 +31,14 @@ impl TicketStore {
     pub fn add_ticket(&mut self, ticket: Ticket) {
         self.tickets.push(ticket);
     }
+
+    pub fn in_progress(&self) -> std::vec::IntoIter<&Ticket> {
+        self.tickets
+            .iter()
+            .filter(|x| x.status == Status::InProgress)
+            .collect::<Vec<_>>()
+            .into_iter()
+    }
 }
 
 #[cfg(test)]
