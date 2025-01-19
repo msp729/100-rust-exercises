@@ -14,7 +14,7 @@ pub async fn echo(listener: TcpListener) -> Result<(), anyhow::Error> {
     loop {
         let (mut stream, addr) = listener.accept().await?;
         let (mut r, mut w) = stream.split();
-        println!("{} bytes echoed", tokio::io::copy(&mut r,&mut w).await?);
+        println!("{} bytes echoed", tokio::io::copy(&mut r, &mut w).await?);
     }
 }
 

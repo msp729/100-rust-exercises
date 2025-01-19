@@ -15,7 +15,9 @@ impl DropBomb {
 
 impl Drop for DropBomb {
     fn drop(&mut self) {
-        if self.0 {panic!("Drop bomb went off")}
+        if self.0 {
+            panic!("Drop bomb went off")
+        }
     }
 }
 

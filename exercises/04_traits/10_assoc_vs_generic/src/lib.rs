@@ -37,8 +37,10 @@ macro_rules! easy {
     }
 }
 
-impl<A: Power<B>,B: Copy> Power<&B> for A {
-    fn power(self, index: &B) -> A {self.power(*index)}
+impl<A: Power<B>, B: Copy> Power<&B> for A {
+    fn power(self, index: &B) -> A {
+        self.power(*index)
+    }
 }
 
 easy![u32:u16, u32:u32];

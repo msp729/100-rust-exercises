@@ -13,7 +13,7 @@ macro_rules! easy {
                 self % 2 == 0
             }
         }
-    }
+    };
 }
 
 easy![u32];

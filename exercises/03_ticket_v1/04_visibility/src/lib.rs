@@ -69,9 +69,9 @@ mod tests {
         // TODO: Once you have verified that the below does not compile,
         //   comment the lines out to move on to the next exercise!
         //let ticket = Ticket {
-            //title: "A title".into(),
-            //description: "A description".into(),
-            //status: "To-Do".into(),
+        //title: "A title".into(),
+        //description: "A description".into(),
+        //status: "To-Do".into(),
         //};
     }
 }
