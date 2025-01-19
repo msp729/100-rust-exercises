@@ -44,8 +44,25 @@ impl TicketStore {
         }
     }
 
-    pub fn add_ticket(&mut self, ticket: Ticket) {
+    pub fn add_ticket(&mut self, draft: TicketDraft) -> TicketId {
+        let id = TicketId(self.tickets.len() as u64);
+        let ticket = Ticket {
+            status: Status::ToDo,
+            description: draft.description,
+            title: draft.title,
+            id,
+        };
         self.tickets.push(ticket);
+        id
+    }
+
+    pub fn get(&self, id: TicketId) -> Option<&Ticket> {
+        let id = id.0 as usize;
+        if id < self.tickets.len() {
+            Some(&self.tickets[id])
+        } else {
+            None
+        }
     }
 }
 
