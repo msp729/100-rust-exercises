@@ -9,12 +9,12 @@ pub async fn echoes(first: TcpListener, second: TcpListener) -> Result<(), anyho
             x = first.accept() => {
                 let (mut s,a) = x?;
                 let (mut r,mut w) = s.split();
-                tokio::io::copy(&mut r, &mut w).await;
+                tokio::io::copy(&mut r, &mut w).await?;
             }
             x = second.accept() => {
                 let (mut s,a) = x?;
                 let (mut r,mut w) = s.split();
-                tokio::io::copy(&mut r, &mut w).await;
+                tokio::io::copy(&mut r, &mut w).await?;
             }
         }
     }
